@@ -127,14 +127,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Craps.cpp" />
+    <ClCompile Include="Deck.cpp" />
     <ClCompile Include="Program4main.cpp" />
     <ClCompile Include="HangmanFunction.cpp" />
     <ClCompile Include="BlackjackFunctions.cpp" />
+    <ClCompile Include="War.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Craps.h" />
+    <ClInclude Include="Deck.h" />
     <ClInclude Include="Hangman.h" />
     <ClInclude Include="Blackjack.h" />
     <ClInclude Include="Program4.h" />
+    <ClInclude Include="War.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="wordList.txt" />

@@ -1,10 +1,8 @@
 #include "Hangman.h"
 
-void hangmanMain() {
-	srand(time(0));
+void hangmanMain() {						// All code was written in class, CS201R. Changes were made to spacing and while loop
+	srand(time(0));							// was added to ask if user wants to play again.
 
-	int randomPick, guessesLeft = 6;		//variables used
-	string word, rword, gword;
 	char gchar;
 
 	ifstream wordList;
@@ -15,49 +13,61 @@ void hangmanMain() {
 	}
 
 	vector<string> inputList;
-	while (wordList >> word) {
-		inputList.push_back(word);
-	}
+	bool playHangman = true;
+	while (playHangman = true) {
+		int randomPick, guessesLeft = 6;
+		string word = "", rword = "", gword = "";
+		cout << "\nHANGMAN";
+		while (wordList >> word) {
+			inputList.push_back(word);
+		}
 
-	randomPick = rand() % (inputList.size());		//picks a random word
-	rword = inputList[randomPick];
+		randomPick = rand() % (inputList.size());		//picks a random word
+		rword = inputList[randomPick];
 
-	cout << "you have " << guessesLeft << " guesses Left " << endl;
-	for (int i = 0; i < rword[i]; i++) { //prints out the spaces left, needed to guess
-		gword += "?";
-	}
-	cout << gword;
+		for (int i = 0; i < rword[i]; i++) { //prints out the spaces left, needed to guess
+			gword += "?";
+		}
+		cout << " - your word is: " << gword << endl;
 
-	while (rword != gword && guessesLeft > 0) {	//allows user to input character until out of guesses or victory
-		cout << "	guess a Letter" << endl;
-		cin >> gchar;
-		if (charFound(gchar, rword)) {
-			for (int i = 0; rword[i]; i++) {
-				if (gchar == rword[i]) {
-					gword[i] = gchar;
+		cout << "You have " << guessesLeft << " guesses. " << endl;
+
+		while (rword != gword && guessesLeft > 0) {	//allows user to input character until out of guesses or victory
+			cout << "Enter your guess: ";
+			cin >> gchar;
+			if (charFound(gchar, rword)) {
+				for (int i = 0; rword[i]; i++) {
+					if (gchar == rword[i]) {
+						gword[i] = gchar;
+					}
+
 				}
-
+				cout << "Nice guess! You have " << guessesLeft << " guesses left." << endl;
 			}
-			cout << "Good Job" << endl;
+			else {
+				guessesLeft--;	// decreases guessesleft
+				cout << "		Sorry that is incorrect. You have " << guessesLeft << " guesses left" << endl;
+			}
+			cout << "Your current word is :  " << gword << endl;
+
+		}
+		if (guessesLeft == 0) {
+			cout << "			You Lose" << endl;
 		}
 		else {
-			guessesLeft--;
-			cout << "		Wrong, you have " << guessesLeft << " guesses left" << endl;
+			cout << "			You Win" << endl;
 		}
-		cout << gword << endl;
+		cout << "			The word was " << rword << endl;
 
-
+		playHangman = playHangmanAgain();
+		if (playHangman == true) {
+			continue;
+		}
+		else if (playHangman ==  false) {
+			wordList.close();
+			break;
+		}
 	}
-	if (guessesLeft == 0) {
-		cout << "			You Lose" << endl;
-
-	}
-	else {
-		cout << "			you WIn" << endl;
-	}
-	cout << "			The word was " << rword << endl;
-
-	wordList.close();
 
 }
 
@@ -68,4 +78,17 @@ bool charFound(char guess, string random) {		//checks to see if guess letter is 
 		}
 	}
 	return false;
+}
+
+bool playHangmanAgain() { // Asks user if they would like to play again, returns true only from y or Y. Any other option exits.
+	string hangmanChoice;
+	cout << "\nWould you like to play again? (Press Y to continue)\n";
+	cin >> hangmanChoice;
+	if (hangmanChoice == "y" || hangmanChoice == "Y") {
+		return true;
+	}
+	else {
+		return false;
+	}
+
 }

@@ -1,5 +1,2 @@
-﻿  HangmanFunction.cpp
-C:\Users\18165\source\repos\Program4\CS201 Program 4 - Games\CS201 Program 4 - Games\HangmanFunction.cpp(4,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  Program4main.cpp
-  Generating Code...
-  CS201 Program 4 - Games.vcxproj -> C:\Users\18165\source\repos\Program4\CS201 Program 4 - Games\x64\Debug\CS201 Program 4 - Games.exe
+﻿  War.cpp
+  CS201 Program 4 - Games.vcxproj -> C:\Users\Owner\Documents\GitHub\CS201-Program4\CS201 Program 4 - Games\x64\Debug\CS201 Program 4 - Games.exe

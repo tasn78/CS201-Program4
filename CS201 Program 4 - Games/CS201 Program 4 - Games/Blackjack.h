@@ -1,45 +1,18 @@
 #pragma once
+#include "Deck.h"
 
 #include <string>
 #include <iostream>
+#include <algorithm>
+#include <vector>
+#include <string>
 using namespace std;
 
-enum class Suit {
-	Hearts,
-	Diamonds,
-	Spades,
-	Clubs,
-};
-
-enum class Value {
-	Ace,
-	Two,
-	Three,
-	Four,
-	Five,
-	Six,
-	Seven,
-	Eight,
-	Nine,
-	Ten,
-	Jack,
-	Queen,
-	King,
-};
-
-class Card {
-private:
-	Suit suit;
-	Value value;
-	
-public:
-	Card(Suit suit, Value value);
-
-	int getNumericalValue(bool totalExceeded);
-	Suit getSuit();
-	Value getValue();
-
-	string get_representation();
-
-
-};
+void startBlackjack(vector<Card>& deck, vector<Card>& player, vector<Card>& dealer);
+int checkForAce(int& total, vector<Card>& hand);
+int addBlackjackHand(vector<Card>& hand);
+void blackjackMain();
+int playerTurnBlackjack(vector<Card>& deck, vector<Card>& player, int& playerTotal);
+int dealerTurnBlackjack(vector<Card>& blackjackDeck, vector<Card>& dealer, int dealerTotal);
+bool playBJAgain();
+void clearTheBoard(vector<Card>& blackjackDeck, vector<Card>& player, vector<Card>& dealer);

@@ -1,12 +1,15 @@
 #include "Hangman.h"
 #include "Program4.h"
 #include "Blackjack.h"
+#include "War.h"
+#include "Craps.h"
 
 string mainMenuChoice;
 
+
 int main() {
 	while (mainMenuChoice != "q" || mainMenuChoice != "Q") {
-		cout << "Games List\n"
+		cout << "\nGames List\n"
 			 << "B - Blackjack\n"
 			 << "C - Craps\n"
 			 << "H - Hangman\n"
@@ -15,16 +18,19 @@ int main() {
 			 << "Q - Quit\n"
 			 << "What game would you like to play?\n";
 
+		mainMenuChoice = "";
 		cin >> mainMenuChoice;
 
 		if (mainMenuChoice == "q" || mainMenuChoice == "Q") {
-			exit;
+			return 0;
 		}
 		else if (mainMenuChoice == "b" || mainMenuChoice == "B") {
-
+			blackjackMain();
+			continue;
 		}
 		else if (mainMenuChoice == "c" || mainMenuChoice == "C") {
-
+			crapsMain();
+			continue;
 		}
 		else if (mainMenuChoice == "h" || mainMenuChoice == "H") {
 			hangmanMain();
@@ -34,7 +40,8 @@ int main() {
 
 		}
 		else if (mainMenuChoice == "w" || mainMenuChoice == "W") {
-
+			warMain();
+			continue;
 		}
 		else {
 			cout << "Please enter a single letter from the list provided.\n";
